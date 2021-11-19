@@ -23,7 +23,7 @@ When running an image with multi-architecture support, docker will automatically
 #### windows
 
 - ltsc2022
-  - [local-nanoserver-2004](#local-nanoserver-2004)
+  - [local-nanoserver-ltsc2022](#local-nanoserver-ltsc2022)
 - 2004
   - [local-nanoserver-2004](#local-nanoserver-2004)
 - 1909
@@ -45,7 +45,7 @@ Supported platforms: linux 20.04, windows 1809, windows 2004, windows ltsc2022
 - [local-linux](#local-linux)
 - [local-nanoserver-1809](#local-nanoserver-1809)
 - [local-nanoserver-2004](#local-nanoserver-2004)
-- [local-nanoserver-2004](#local-nanoserver-2004)
+- [local-nanoserver-ltsc2022](#local-nanoserver-ltsc2022)
 
 
 ### local-linux
@@ -137,7 +137,7 @@ docker build -f "generated/windows/MinimalAgent/nanoserver/2004/Dockerfile" -t t
 
 _The required free space to generate image(s) is about **8 GB**._
 
-### local-nanoserver-2004
+### local-nanoserver-ltsc2022
 
 [Dockerfile](windows/MinimalAgent/nanoserver/ltsc2022/Dockerfile)
 
@@ -157,12 +157,12 @@ Container platform: windows
 Docker build commands:
 
 ```
-docker pull mcr.microsoft.com/windows/nanoserver:2004
-docker pull mcr.microsoft.com/powershell:nanoserver-2004
+docker pull mcr.microsoft.com/windows/nanoserver:ltsc2022
+docker pull mcr.microsoft.com/powershell:nanoserver-ltsc2022
 echo TeamCity/webapps > context/.dockerignore
 echo TeamCity/devPackage >> context/.dockerignore
 echo TeamCity/lib >> context/.dockerignore
-docker build -f "generated/windows/MinimalAgent/nanoserver/ltsc2022/Dockerfile" -t teamcity-minimal-agent:local-nanoserver-2004 "context"
+docker build -f "generated/windows/MinimalAgent/nanoserver/ltsc2022/Dockerfile" -t teamcity-minimal-agent:local-nanoserver-ltsc2022 "context"
 ```
 
 _The required free space to generate image(s) is about **8 GB**._

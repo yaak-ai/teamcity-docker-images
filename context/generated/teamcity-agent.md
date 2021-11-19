@@ -28,8 +28,8 @@ When running an image with multi-architecture support, docker will automatically
 #### windows
 
 - ltsc2022
-  - [EAP-nanoserver-2004](#EAP-nanoserver-2004)
-  - [EAP-windowsservercore-2004](#EAP-windowsservercore-2004)
+  - [EAP-nanoserver-ltsc2022](#EAP-nanoserver-ltsc2022)
+  - [EAP-windowsservercore-ltsc2022](#EAP-windowsservercore-ltsc2022)
 - 2004
   - [EAP-nanoserver-2004](#EAP-nanoserver-2004)
   - [EAP-windowsservercore-2004](#EAP-windowsservercore-2004)
@@ -58,7 +58,7 @@ Supported platforms: linux 20.04, windows 1809, windows 2004, windows ltsc2022
 - [EAP-linux](#EAP-linux)
 - [EAP-nanoserver-1809](#EAP-nanoserver-1809)
 - [EAP-nanoserver-2004](#EAP-nanoserver-2004)
-- [EAP-nanoserver-2004](#EAP-nanoserver-2004)
+- [EAP-nanoserver-ltsc2022](#EAP-nanoserver-ltsc2022)
 
 ### EAP-windowsservercore
 
@@ -68,7 +68,7 @@ Supported platforms: windows 1809, windows 2004, windows ltsc2022
 
 - [EAP-windowsservercore-1809](#EAP-windowsservercore-1809)
 - [EAP-windowsservercore-2004](#EAP-windowsservercore-2004)
-- [EAP-windowsservercore-2004](#EAP-windowsservercore-2004)
+- [EAP-windowsservercore-ltsc2022](#EAP-windowsservercore-ltsc2022)
 
 
 ### EAP-linux
@@ -199,14 +199,14 @@ docker pull mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-2004
 echo TeamCity/webapps > context/.dockerignore
 echo TeamCity/devPackage >> context/.dockerignore
 echo TeamCity/lib >> context/.dockerignore
-docker build -f "context/generated/windows/MinimalAgent/nanoserver/ltsc2022/Dockerfile" -t teamcity-minimal-agent:EAP-nanoserver-2004 "context"
-docker build -f "context/generated/windows/Agent/windowsservercore/ltsc2022/Dockerfile" -t teamcity-agent:EAP-windowsservercore-2004 "context"
+docker build -f "context/generated/windows/MinimalAgent/nanoserver/2004/Dockerfile" -t teamcity-minimal-agent:EAP-nanoserver-2004 "context"
+docker build -f "context/generated/windows/Agent/windowsservercore/2004/Dockerfile" -t teamcity-agent:EAP-windowsservercore-2004 "context"
 docker build -f "context/generated/windows/Agent/nanoserver/2004/Dockerfile" -t teamcity-agent:EAP-nanoserver-2004 "context"
 ```
 
 _The required free space to generate image(s) is about **35 GB**._
 
-### EAP-nanoserver-2004
+### EAP-nanoserver-ltsc2022
 
 [Dockerfile](windows/Agent/nanoserver/ltsc2022/Dockerfile)
 
@@ -228,15 +228,15 @@ Container platform: windows
 Docker build commands:
 
 ```
-docker pull mcr.microsoft.com/windows/nanoserver:2004
-docker pull mcr.microsoft.com/powershell:nanoserver-2004
-docker pull mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-2004
+docker pull mcr.microsoft.com/windows/nanoserver:ltsc2022
+docker pull mcr.microsoft.com/powershell:nanoserver-ltsc2022
+docker pull mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-ltsc2022
 echo TeamCity/webapps > context/.dockerignore
 echo TeamCity/devPackage >> context/.dockerignore
 echo TeamCity/lib >> context/.dockerignore
-docker build -f "context/generated/windows/MinimalAgent/nanoserver/ltsc2022/Dockerfile" -t teamcity-minimal-agent:EAP-nanoserver-2004 "context"
-docker build -f "context/generated/windows/Agent/windowsservercore/ltsc2022/Dockerfile" -t teamcity-agent:EAP-windowsservercore-2004 "context"
-docker build -f "context/generated/windows/Agent/nanoserver/ltsc2022/Dockerfile" -t teamcity-agent:EAP-nanoserver-2004 "context"
+docker build -f "context/generated/windows/MinimalAgent/nanoserver/ltsc2022/Dockerfile" -t teamcity-minimal-agent:EAP-nanoserver-ltsc2022 "context"
+docker build -f "context/generated/windows/Agent/windowsservercore/ltsc2022/Dockerfile" -t teamcity-agent:EAP-windowsservercore-ltsc2022 "context"
+docker build -f "context/generated/windows/Agent/nanoserver/ltsc2022/Dockerfile" -t teamcity-agent:EAP-nanoserver-ltsc2022 "context"
 ```
 
 _The required free space to generate image(s) is about **35 GB**._
@@ -305,13 +305,13 @@ docker pull mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-2004
 echo TeamCity/webapps > context/.dockerignore
 echo TeamCity/devPackage >> context/.dockerignore
 echo TeamCity/lib >> context/.dockerignore
-docker build -f "context/generated/windows/MinimalAgent/nanoserver/ltsc2022/Dockerfile" -t teamcity-minimal-agent:EAP-nanoserver-2004 "context"
+docker build -f "context/generated/windows/MinimalAgent/nanoserver/2004/Dockerfile" -t teamcity-minimal-agent:EAP-nanoserver-2004 "context"
 docker build -f "context/generated/windows/Agent/windowsservercore/2004/Dockerfile" -t teamcity-agent:EAP-windowsservercore-2004 "context"
 ```
 
 _The required free space to generate image(s) is about **33 GB**._
 
-### EAP-windowsservercore-2004
+### EAP-windowsservercore-ltsc2022
 
 [Dockerfile](windows/Agent/windowsservercore/ltsc2022/Dockerfile)
 
@@ -334,14 +334,14 @@ Container platform: windows
 Docker build commands:
 
 ```
-docker pull mcr.microsoft.com/windows/nanoserver:2004
-docker pull mcr.microsoft.com/powershell:nanoserver-2004
-docker pull mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-2004
+docker pull mcr.microsoft.com/windows/nanoserver:ltsc2022
+docker pull mcr.microsoft.com/powershell:nanoserver-ltsc2022
+docker pull mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-ltsc2022
 echo TeamCity/webapps > context/.dockerignore
 echo TeamCity/devPackage >> context/.dockerignore
 echo TeamCity/lib >> context/.dockerignore
-docker build -f "context/generated/windows/MinimalAgent/nanoserver/ltsc2022/Dockerfile" -t teamcity-minimal-agent:EAP-nanoserver-2004 "context"
-docker build -f "context/generated/windows/Agent/windowsservercore/ltsc2022/Dockerfile" -t teamcity-agent:EAP-windowsservercore-2004 "context"
+docker build -f "context/generated/windows/MinimalAgent/nanoserver/ltsc2022/Dockerfile" -t teamcity-minimal-agent:EAP-nanoserver-ltsc2022 "context"
+docker build -f "context/generated/windows/Agent/windowsservercore/ltsc2022/Dockerfile" -t teamcity-agent:EAP-windowsservercore-ltsc2022 "context"
 ```
 
 _The required free space to generate image(s) is about **33 GB**._
