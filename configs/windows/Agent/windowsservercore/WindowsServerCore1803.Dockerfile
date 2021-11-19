@@ -94,7 +94,7 @@ ENV CONFIG_FILE="C:/BuildAgent/conf/buildAgent.properties" \
 USER ContainerAdministrator
 RUN setx /M PATH ('{0};{1}\bin;C:\Program Files\Git\cmd;C:\Program Files\Mercurial' -f $env:PATH, $env:JAVA_HOME)
 
---> yaak changes for installing minimal build dependencies
+#--> yaak changes for installing minimal build dependencies
 #install perforce command line client
 RUN curl.exe -L https://www.perforce.com/downloads/perforce/r21.2/bin.ntx64/helix-p4-x64.exe --output helix-p4-x64.exe; \
 	Start-Process helix-p4-x64.exe -Wait -ArgumentList /s, /norestart ; \
@@ -107,6 +107,6 @@ RUN curl.exe -SL --output vs_buildtools.exe https://aka.ms/vs/17/release/vs_buil
 	
 #set AutoSDK path
 RUN setx /M UE_SDKS_ROOT C:\AutoSDK
-<-- yaak changes for installing minimal build dependencies
+#<-- yaak changes for installing minimal build dependencies
 
 USER ContainerUser
