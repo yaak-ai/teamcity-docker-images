@@ -103,6 +103,10 @@ RUN curl.exe -SL --output vs_buildtools.exe https://aka.ms/vs/17/release/vs_buil
 	
 #set AutoSDK path
 RUN setx /M UE_SDKS_ROOT C:\AutoSDK
+
+#set default server url
+ENV SERVER_URL https://yaak.teamcity.com
+
 #<-- yaak changes for installing minimal build dependencies
 
 USER ContainerUser
