@@ -4,6 +4,8 @@ param (
 	[Parameter(Mandatory=$true)][string]$AgentName,		
 	[string]$AgentAuthToken = $(Read-Host 'Enter one time use auth token or leave empty if agent was previously registered' -AsSecureString)
 ) 
+
+docker login
  
 $AgentFolder = Join-Path "${AgentBasePath}" -ChildPath "${AgentName}"
 Write-Output "Creating build agent ${AgentFolder}"
