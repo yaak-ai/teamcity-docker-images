@@ -2,7 +2,7 @@ param (
 	[string]$YaakServerUrl = "https://yaak.teamcity.com",
 	[string]$AgentBasePath = "C:/Agents",
 	[Parameter(Mandatory=$true)][string]$AgentName,		
-	[string]$AgentAuthToken = $(Read-Host 'Enter one time use auth token or leave empty if agent was previously registered' -AsSecureString)
+	[string]$AgentAuthToken = $(Read-Host 'Enter one time use auth token or leave empty if agent was previously registered')
 ) 
 
 docker login
