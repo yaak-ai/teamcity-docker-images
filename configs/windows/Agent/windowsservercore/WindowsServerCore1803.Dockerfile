@@ -108,8 +108,14 @@ RUN curl.exe -SL --output vs_buildtools.exe https://aka.ms/vs/17/release/vs_buil
 #set AutoSDK path
 RUN setx /M UE_SDKS_ROOT C:\AutoSDK
 
+#set derived data cache path
+VOLUME C:\ddc
+RUN setx /M UE-SharedDataCachePath C:\ddc
+
+
 #set default server url
-ENV SERVER_URL https://yaak.teamcity.com
+ARG DEFAULT_SERVER_URL
+ENV SERVER_URL ${DEFAULT_SERVER_URL}
 
 #<-- yaak changes for installing minimal build dependencies
 

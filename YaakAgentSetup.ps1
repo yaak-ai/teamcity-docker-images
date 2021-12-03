@@ -2,7 +2,8 @@ param (
 	[string]$YaakServerUrl = "https://yaak.teamcity.com",
 	[string]$AgentBasePath = "C:/Agents",
 	[Parameter(Mandatory=$true)][string]$AgentName,		
-	[string]$AgentAuthToken = $(Read-Host 'Enter one time use auth token or leave empty if agent was previously registered')
+	[string]$AgentAuthToken = $(Read-Host 'Enter one time use auth token or leave empty if agent was previously registered'),
+	[string]$DerivedDataCachePath = "C:\ddc"
 ) 
 
 docker login
@@ -23,6 +24,7 @@ Write-Output "Generating build agent file structure"
 md -Force "${AgentFolder}/conf"
 md -Force "${AgentFolder}/system"
 md -Force "${AgentFolder}/work"
+md -Force "$DerivedDataCachePath"
 	
 $params = @( 
 	"--name=${AgentName}"
@@ -37,10 +39,14 @@ $params = @(
 	"-v"
 	"${AgentFolder}/system:C:/BuildAgent/system"
 	"-v"
-	"${AgentFolder}/work:C:/BuildAgent/work"	
+	"${AgentFolder}/work:C:/BuildAgent/work"
+	"-v"
+	"${DerivedDataCachePath}:C:/ddc"
 )
-	
-docker run -d --restart always $params yaaktech/simcis	
+
+docker pull yaaktech/simcis:latest
+
+docker run -d --restart always $params yaaktech/simcis:latest
 
 
 Write-output "Agent setup successful!"
