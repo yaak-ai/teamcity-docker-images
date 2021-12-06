@@ -46,7 +46,7 @@ $params = @(
 
 docker pull yaaktech/simcis:latest
 
-docker run -d --restart always $params yaaktech/simcis:latest
+docker run -d --restart always --isolation=process $params yaaktech/simcis:latest
 
 
 Write-output "Agent setup successful!"
