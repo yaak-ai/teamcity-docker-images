@@ -101,7 +101,7 @@ RUN curl.exe -L https://www.perforce.com/downloads/perforce/r21.2/bin.ntx64/heli
 	Remove-Item -Force helix-p4-x64.exe
 	
 #install minimal build environment
-RUN curl.exe -SL --output vs_buildtools.exe https://aka.ms/vs/17/release/vs_buildtools.exe; \
+RUN curl.exe -SL --output vs_buildtools.exe https://aka.ms/vs/16/release/vs_buildtools.exe; \
 	Start-Process vs_buildtools.exe -Wait -ArgumentList --quiet, --wait, --norestart, --nocache, modify, --add, "Microsoft.Net.Component.4.6.2.TargetingPack" ; \
 	Remove-Item -Force vs_buildtools.exe
 	
