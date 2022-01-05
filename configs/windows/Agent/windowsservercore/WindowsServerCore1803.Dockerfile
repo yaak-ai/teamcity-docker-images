@@ -101,9 +101,33 @@ RUN curl.exe -L https://www.perforce.com/downloads/perforce/r21.2/bin.ntx64/heli
 	Remove-Item -Force helix-p4-x64.exe
 	
 #install minimal build environment
-RUN curl.exe -SL --output vs_buildtools.exe https://aka.ms/vs/16/release/vs_buildtools.exe; \
-	Start-Process vs_buildtools.exe -Wait -ArgumentList --quiet, --wait, --norestart, --nocache, modify, --add, "Microsoft.Net.Component.4.6.2.TargetingPack" ; \
+RUN curl.exe -SL --output vs_buildtools.exe https://aka.ms/vs/17/release/vs_buildtools.exe; \
+	Start-Process vs_buildtools.exe -Wait -ArgumentList --quiet, --wait, --norestart, --nocache, modify, --add, "Microsoft.Net.Component.4.6.2.TargetingPack"; \
 	Remove-Item -Force vs_buildtools.exe
+	
+#install 2019 Build tools as UE 4.27.2 still seems to require it under certain conditions
+#see https://udn.unrealengine.com/s/question/0D54z00007MyHUYCA3/windowsplatformtrygetmsbuildpath-doesnt-detect-visual-studio-2022
+RUN curl.exe -SL --output vs_buildtools.exe https://aka.ms/vs/16/release/vs_buildtools.exe; \
+	Start-Process vs_buildtools.exe -Wait -ArgumentList @( \
+        \"--quiet\", \
+        \"--wait\", \
+        \"--norestart\", \
+        \"--nocache\", \
+        \"--add\", \
+        \"Microsoft.VisualStudio.Component.Roslyn.Compiler\", \
+        \"--add\", \
+        \"Microsoft.Component.MSBuild\", \
+        \"--add\", \
+        \"Microsoft.VisualStudio.Component.CoreBuildTools\", \
+        \"--add\", \
+        \"Microsoft.VisualStudio.Workload.MSBuildTools\", \
+        \"--add\", \
+        \"Microsoft.NetCore.Component.Runtime.3.1\", \
+        \"--add\", \
+        \"Microsoft.Net.Component.4.6.2.TargetingPack\" \
+    ); \
+	Remove-Item -Force vs_buildtools.exe
+
 	
 #set AutoSDK path
 RUN setx /M UE_SDKS_ROOT C:\AutoSDK
