@@ -98,6 +98,7 @@ RUN setx /M PATH ('{0};{1}\bin;C:\Program Files\Git\cmd;C:\Program Files\Mercuri
 #install perforce command line client
 RUN curl.exe -L https://www.perforce.com/downloads/perforce/r21.2/bin.ntx64/helix-p4-x64.exe --output helix-p4-x64.exe; \
 	Start-Process helix-p4-x64.exe -Wait -ArgumentList /s, /norestart ; \
+	\"p4 %YAAK_P4_GLOBAL_OPTIONS% %*\" | Out-File -FilePath C:/p4wrapper.cmd -Encoding ascii; \
 	Remove-Item -Force helix-p4-x64.exe
 	
 #install minimal build environment
